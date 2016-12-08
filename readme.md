@@ -1,5 +1,7 @@
 # Sitecore.Support.138035
-Render &quot;Media Link&quot; specified in the &quot;General Link&quot; field with &quot;la&quot; parameter depending on the context language
+`Media Link` specified in the `General Link` field is rendered without the `la` query string parameter.<br/>
+The issue happens because the `Sitecore.Resources.Media.MediaProvider.GetMediaUrl` method (which is used to get `Media Link`) doesn’t consider the context language.<br/>
+This patch overrides the described method in order to add the `la` query string parameter to `Media Link` if the `languageEmbedding` attribute is not set to `never` for `Link Provider` in the `\Website\App_Config\Sitecore.config` file.
 
 ## License  
 This patch is licensed under the [Sitecore Corporation A/S License for GitHub](https://github.com/sitecoresupport/Sitecore.Support.138035/blob/master/LICENSE).  
